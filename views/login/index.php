@@ -10,6 +10,9 @@
 
 <body>
   <h1>This is the login</h1>
+  <p>
+    <?= $this->showMessages(); ?>
+  </p>
 </body>
 
 </html>
