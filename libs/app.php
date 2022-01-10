@@ -1,5 +1,7 @@
 <?
 
+require_once './controllers/errors.php';
+
 class App
 {
   public function __construct()
@@ -46,6 +48,9 @@ class App
           }
         } else {
           // return error in case of not existing (action) method
+
+          $controller = new Errors();
+          $controller->render();
         }
       } else {
         // return (action) method by default
@@ -53,6 +58,9 @@ class App
       }
     } else {
       // if not exist file controller , return error 404
+      // throw new Exception("Method $url[1] not found in the controller $url[0]");
+      $controller = new Errors();
+      $controller->render();
     }
   }
 }
