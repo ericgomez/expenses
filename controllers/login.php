@@ -1,6 +1,6 @@
 <?
 
-class Login extends Controller
+class Login extends SessionController
 {
 
   public function __construct()

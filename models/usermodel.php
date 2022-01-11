@@ -30,7 +30,7 @@ class UserModel extends Model implements IModel
         'username' => $this->username,
         'password' => $this->password,
         'role'    => $this->role,
-        'budget' => -$this->budget,
+        'budget' => $this->budget,
         'photo' => $this->photo,
         'name' => $this->name
       ]);
@@ -64,10 +64,12 @@ class UserModel extends Model implements IModel
   }
 
   public function getById($id) {
+    $this->setId($id);
+
     try {
       $query = $this->prepare('SELECT * FROM users WHERE id = :id');
       $query->execute([
-        'id' => $id
+        'id' => $this->id
       ]);
 
       $user = $query->fetch(PDO::FETCH_ASSOC);
@@ -85,10 +87,12 @@ class UserModel extends Model implements IModel
   }
 
   public function delete($id) {
+    $this->setId($id);
+    
     try {
       $query = $this->prepare('DELETE FROM users WHERE id = :id');
       $query->execute([
-        'id' => $id
+        'id' => $this->id
       ]);
 
       return true;
