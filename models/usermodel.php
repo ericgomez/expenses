@@ -103,7 +103,7 @@ class UserModel extends Model implements IModel
 
   public function update() {
     try {
-      $query = $this->prepare('UPDATE users SET username = :username, password = :password, role = :role, budge = :budge, photo = :photo, name = :name WHERE id = :id');
+      $query = $this->prepare('UPDATE users SET username = :username, password = :password, role = :role, budget = :budget, photo = :photo, name = :name WHERE id = :id');
       $query->execute([
         'id' => $this->id,
         'username' => $this->username,
@@ -182,6 +182,7 @@ class UserModel extends Model implements IModel
   public function getRole() {       return $this->role; }
   public function getBudget() {     return $this->budget; }
   public function getPhoto() {      return $this->photo; }
+  public function getName() {       return $this->name; }
 
 
 }

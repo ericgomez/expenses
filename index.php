@@ -14,5 +14,8 @@ require_once('classes/sessioncontroller.php');
 require_once('config/config.php');
 
 include_once 'models/usermodel.php';
+include_once 'models/expensesmodel.php';
+include_once "models/categoriesmodel.php";
+include_once "models/joinexpensescategoriesmodel.php";
 
 $app = new App();

@@ -24,7 +24,7 @@ class Controller
   public function existPOST($params)
   {
     foreach ($params as $param) {
-      if (!isset($_POST[$param])) {
+      if(!isset($_POST[$param])){
         return false;
       }
     }
