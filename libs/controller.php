@@ -10,7 +10,7 @@ class Controller
   // charger the model
   function loadModel($model)
   {
-    $url = 'models/' . $model . '.php';
+    $url = 'models/' . $model . 'model.php';
 
     // verifier if the file exists
     if (file_exists($url)) {
@@ -70,6 +70,6 @@ class Controller
       $params = '?' . $param;
     }
 
-    header('Location: ' . constant('URL') . $url . $params);
+    header('Location: ' . constant('URL') . '/' . $url . $params);
   }
 }

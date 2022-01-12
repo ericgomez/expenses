@@ -73,7 +73,8 @@ class SessionController extends Controller {
   }
 
   public function getUserSessionData() {
-    $id = $this->userId;
+    $id = $this->session->getCurrentUser();
+
     $this->user = new UserModel();
     $this->user->getById($id);
 
@@ -87,7 +88,7 @@ class SessionController extends Controller {
 
   public function isPublic() {
     $currentURL = $this->getCurrentPage();
-    $currentURL = preg_replace('/\?.*/', '', $currentURL);
+    $currentURL = preg_replace("/\?.*/", "", $currentURL);
 
     for ($i=0; $i < sizeof($this->sites); $i++) { 
       if ($this->sites[$i]['site'] === $currentURL && $this->sites[$i]['access'] === 'public') {
@@ -113,12 +114,13 @@ class SessionController extends Controller {
         break;
       }
     }
+    // header('Location: '. constant('URL') . $url);
     header('Location: '. $url);
   }
 
   private function isAuthorized($role){
     $currentURL = $this->getCurrentPage();
-    $currentURL = preg_replace( "/\?.*/", "", $currentURL); //omitir get info
+    $currentURL = preg_replace( "/\?.*/", "", $currentURL);
     
     for($i = 0; $i < sizeof($this->sites); $i++){
         if($this->sites[$i]['site'] === $currentURL  && $this->sites[$i]['role'] === $role){

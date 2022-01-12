@@ -9,10 +9,29 @@
 </head>
 
 <body>
-  <h1>This is the login</h1>
-  <p>
-    <?= $this->showMessages(); ?>
-  </p>
+<?php $this->showMessages();?>
+    <div id="login-main">
+        <form action="<?= constant('URL'); ?>/login/authenticate" method="POST">
+        <div><?php (isset($this->errorMessage))?  $this->errorMessage : '' ?></div>
+            <h2>Login</h2>
+
+            <p>
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" autocomplete="off">
+            </p>
+            <p>
+                <label for="password">password</label>
+                <input type="password" name="password" id="password" autocomplete="off">
+            </p>
+            <p>
+                <input type="submit" value="Login" />
+            </p>
+
+            <p>
+                ¿You have an count? <a href="<?= constant('URL'); ?>/signup">Register</a>
+            </p>
+        </form>
+    </div>
 </body>
 
 </html>

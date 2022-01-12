@@ -25,7 +25,7 @@ class UserModel extends Model implements IModel
   public function save()
   {
     try {
-      $query = $this->prepare('INSERT INTO users (username, password, role, budge, photo, name) VALUES (:username, :password, :role, :budget, :photo, :name)');
+      $query = $this->prepare('INSERT INTO users (username, password, role, budget, photo, name) VALUES (:username, :password, :role, :budget, :photo, :name)');
       $query->execute([
         'username' => $this->username,
         'password' => $this->password,
@@ -121,17 +121,17 @@ class UserModel extends Model implements IModel
   }
 
   public function from($array) {
-    $this->setId($array['id']);
-    $this->setUsername($array['username']);
-    $this->setPassword($array['password']);
-    $this->setRole($array['role']);
-    $this->setBudget($array['budget']);
-    $this->setPhoto($array['photo']);
-    $this->setName($array['name']);
+    $this->id       = $array['id'];
+    $this->username = $array['username'];
+    $this->password = $array['password'];
+    $this->role     = $array['role'];
+    $this->budget   = $array['budget'];
+    $this->photo    = $array['photo'];
+    $this->name     = $array['name'];
   }
 
   // check if user exists
-  public function exist($username) {
+  public function exists($username) {
     try {
       $query = $this->prepare('SELECT username FROM users WHERE username = :username');
       $query->execute([
