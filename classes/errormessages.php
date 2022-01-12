@@ -11,6 +11,9 @@ class ErrorMessages
   const ERROR_LOGIN_AUTHENTICATE               = "11c37cfab311fbe28652f4947a9523c4";
   const ERROR_LOGIN_AUTHENTICATE_EMPTY         = "2194ac064912be67fc164539dc435a42";
   const ERROR_LOGIN_AUTHENTICATE_DATA          = "bcbe63ed8464684af6945ad8a89f76f8";
+  const ERROR_EXPENSES_DELETE                 = "8f48a0845b4f8704cb7e8b00d4981233";
+  const ERROR_EXPENSES_NEWEXPENSE             = "8f48a0845b4f8704cb7e8b00d4981233";
+  const ERROR_EXPENSES_NEWEXPENSE_EMPTY       = "a5bcd7089d83f45e17e989fbc86003ed";
 
   private $errorsList = [];
 
@@ -24,6 +27,9 @@ class ErrorMessages
       ErrorMessages::ERROR_LOGIN_AUTHENTICATE        => 'There was a problem authenticating',
       ErrorMessages::ERROR_LOGIN_AUTHENTICATE_EMPTY  => 'Parameters to authenticate cannot be empty',
       ErrorMessages::ERROR_LOGIN_AUTHENTICATE_DATA   => 'Incorrect username and / or password',
+      ErrorMessages::ERROR_EXPENSES_DELETE           => 'There was a problem eliminating the expense, try again',
+      ErrorMessages::ERROR_EXPENSES_NEWEXPENSE       => 'There was a problem creating the expense, please try again',
+      ErrorMessages::ERROR_EXPENSES_NEWEXPENSE_EMPTY => 'Fields cannot be empty',
     ];
   }
 
