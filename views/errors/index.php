@@ -9,7 +9,20 @@
 </head>
 
 <body>
-  <h1>Error 404: Page not found.</h1>
+  
+  <?php require 'views/header.php'; ?>
+    <div class="error-container">
+        <div class="error-info">
+        <h1 class="error404">404</h1> 
+        <p>
+            
+            The page you are looking for does not exist.
+            <br />
+            <a href="<?= constant('URL') ?>">Return to home page</a>
+        </p>   
+        </div>
+        
+    </div>
 </body>
 
 </html>
