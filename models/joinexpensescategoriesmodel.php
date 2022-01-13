@@ -24,10 +24,11 @@ class JoinExpensesCategoriesModel extends Model{
 
 
             while($response = $query->fetch(PDO::FETCH_ASSOC)){
-                // $item = new JoinExpensesCategoriesModel();
-                $this->from($response);
+                $item = new JoinExpensesCategoriesModel();
                 
-                array_push($items, $this);
+                $item->from($response);
+                
+                array_push($items, $item);
             }
 
             return $items;

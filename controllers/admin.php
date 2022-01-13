@@ -99,7 +99,15 @@ class Admin extends SessionController{
           $repeat[$expense->getCategoryId()]++;
       }
 
-      $categoryMostUsed = max($repeat);
+      // $categoryMostUsed = max($repeat);
+      $categoryMostUsed = 0;
+      $maxCategory = max($repeat);
+      foreach ($repeat as $index => $category) {
+          if($category == $maxCategory){
+              $categoryMostUsed = $index;
+          }
+      }
+
       $categoryModel = new CategoriesModel();
       $categoryModel->getById($categoryMostUsed);
 
@@ -118,9 +126,16 @@ class Admin extends SessionController{
           $repeat[$expense->getCategoryId()]++;
       }
 
-      $categoryMostUsed = min($repeat);
+     // $categoryLessUsed = min($repeat);
+      $categoryLessUsed = 0;
+      $minCategory = min($repeat);
+      foreach ($repeat as $index => $category) {
+        if($category == $minCategory){
+            $categoryLessUsed = $index;
+        }
+      }
       $categoryModel = new CategoriesModel();
-      $categoryModel->getById($categoryMostUsed);
+      $categoryModel->getById($categoryLessUsed);
 
       $category = $categoryModel->getName();
 

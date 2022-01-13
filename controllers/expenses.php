@@ -80,12 +80,18 @@ class Expenses extends SessionController{
         foreach ($expenses as $expense) {
             array_push($months, substr($expense->getDate(),0, 7 ));
         }
+
         $months = array_values(array_unique($months));
-        if(count($months) >3){
-            array_push($res, array_pop($months));
-            array_push($res, array_pop($months));
-            array_push($res, array_pop($months));
+
+        foreach ($months as $month) {
+            array_push($res, $month);
         }
+        
+        // if(count($months) >3){
+        //     array_push($res, array_pop($months));
+        //     array_push($res, array_pop($months));
+        //     array_push($res, array_pop($months));
+        // }
         return $res;
     }
 

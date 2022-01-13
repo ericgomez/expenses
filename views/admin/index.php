@@ -13,8 +13,7 @@
     <? require 'header.php'; ?>
 
     <div id="main-container">
-      <?
-            $this->showMessages(); ?>
+      <? $this->showMessages(); ?>
       <div id="dashboard-container" class="container">
         <div id="left-container">
           <div id="panels-container">

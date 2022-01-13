@@ -54,7 +54,7 @@
                         <div class="card w-50">
                             <div class="total-budget">
                                 <span class="total-budget-text">
-                                    de
+                                    of
                                     $
                                     <?= number_format($user->getBudget(),2) . ' monthly you have left';
                                     ?>
@@ -87,7 +87,7 @@
                             </div>
                             <div class="total-expense">
                                 <?
-                                    if($totalThisMonth === null){
+                                    if($maxExpensesThisMonth === null){
                                         // showError('There was a problem loading the information');
                                     }else{?>
                                 <span>$

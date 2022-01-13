@@ -40,10 +40,10 @@ class ExpensesModel extends Model implements IModel{
 
             while($response = $query->fetch(PDO::FETCH_ASSOC)){
 
-                // $item = new ExpensesModel();
-                $this->from($response); 
+                $item = new ExpensesModel();
+                $item->from($response); 
                 
-                array_push($items, $this);
+                array_push($items, $item);
             }
 
             return $items;
@@ -113,11 +113,11 @@ class ExpensesModel extends Model implements IModel{
             $query->execute([ "userId" => $userId]);
 
             while($response = $query->fetch(PDO::FETCH_ASSOC)){
-                // $item = new ExpensesModel();
-                // $item->from($p); 
-                $this->from($response); 
+                $item = new ExpensesModel();
+
+                $item->from($response); 
                 
-                array_push($items, $this);
+                array_push($items, $item);
             }
 
             return $items;
@@ -134,12 +134,11 @@ class ExpensesModel extends Model implements IModel{
             $query = $this->prepare('SELECT * FROM expenses WHERE id_user = :userId ORDER BY expenses.date DESC LIMIT 0, :n ');
             $query->execute([ 'n' => $n, 'userId' => $userId]);
             while($response = $query->fetch(PDO::FETCH_ASSOC)){
-                // $item = new ExpensesModel();
-                // $item->from($p); 
+                $item = new ExpensesModel();
 
-                $this->from($response); 
+                $item->from($response); 
                 
-                array_push($items, $this);
+                array_push($items, $item);
             }
             return $items;
         }catch(PDOException $e){

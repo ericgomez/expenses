@@ -47,16 +47,17 @@ class UserModel extends Model implements IModel
       $query = $this->query('SELECT * FROM users');
 
       while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+        $item = new UserModel();
+        
+        $item->setId($row['id']);
+        $item->setUsername($row['username']);
+        $item->setPassword($row['password'], false);
+        $item->setRole($row['role']);
+        $item->setBudget($row['budget']);
+        $item->setPhoto($row['photo']);
+        $item->setName($row['name']);
 
-        $this->setId($row['id']);
-        $this->setUsername($row['username']);
-        $this->setPassword($row['password']);
-        $this->setRole($row['role']);
-        $this->setBudget($row['budget']);
-        $this->setPhoto($row['photo']);
-        $this->setName($row['name']);
-
-        array_push($items, $this);
+        array_push($items, $item);
       }
 
       return $items;
@@ -76,7 +77,7 @@ class UserModel extends Model implements IModel
 
       $this->setId($user['id']);
       $this->setUsername($user['username']);
-      $this->setPassword($user['password']);
+      $this->setPassword($user['password'], false);
       $this->setRole($user['role']);
       $this->setBudget($user['budget']);
       $this->setPhoto($user['photo']);
@@ -171,8 +172,12 @@ class UserModel extends Model implements IModel
   public function setBudget($budget) {     $this->budget = $budget; }
   public function setPhoto($photo) {       $this->photo = $photo; }
   public function setName($name) {         $this->name = $name; }
-  public function setPassword($password) { 
-    $this->password = $this->getHashedPassword($password); 
+  public function setPassword($password, $hash = true) { 
+    if ($hash) {
+      $this->password = $this->getHashedPassword($password); 
+    } else {
+      $this->password = $password;
+    }
   }
 
 
